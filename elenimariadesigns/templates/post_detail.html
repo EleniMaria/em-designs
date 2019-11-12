@@ -1,0 +1,29 @@
+<!-- /posts linked from / -->
+{% extends 'base.html' %}
+{% block content %}
+<h1>Detailed List of Posts</h1>
+<h1><a href="{% url 'post_list' %}">Homepage</a></h1>
+
+{% for post in posts %}
+<h4>Post Title: {{ post.title }}</h4>
+<h4>Author: {{ post.author }}</h4>
+<h4>Post Body: {{ post.body }}</h4>
+<h6>Post ID # {{post.id}}</h6>
+<nav>
+ 
+<a href="{% url 'post_edit' pk=post.id %}">Edit Post</a>
+<a href="{% url 'post_delete' pk=post.id %}">Delete Post</a>
+<a href="{% url 'post_form' %}">New Post</a>
+
+</nav>
+<br>
+<h1>View, Create, or Modify <a href="{% url 'comment_list' %}">( Comments )</a></h1>{% endfor %}
+
+
+{% for comment in post.comment.all %}
+<h5>Comment Title:  {{ comment.title }}</h5>
+<h5>Comment Author: {{ comment.author }}</h5>
+<h5>Comment Body: {{ comment.body}}</h5>
+<a href="{% url 'comment_edit' pk=post.id %}">Edit Comment</a>
+<a class="delete" href="{% url 'comment_delete' pk=post.id %}">Delete Comment</a>
+{% endfor %} {% endblock %}

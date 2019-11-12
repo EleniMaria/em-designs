@@ -1,0 +1,19 @@
+<!-- posts/ID# -->
+{% extends 'base.html' %}{% block content %}
+<h1>Post # {{post.id}}</h1>
+<ul>
+<h3>Title: {{post.title}}</h3>
+<br>
+<h3> Body: {{post.body}}</h3>
+<br>
+<h3>Author: {{post.author}}</h3>
+</ul>
+<br>
+<nav>
+<a href="{% url 'post_edit' pk=post.id %}">Edit Post</a>
+<a href="{% url 'post_delete' pk=post.id %}">Delete Post</a>
+<a href="{% url 'post_form' %}">New Post</a>
+</nav>
+<br>
+<h1><a href="{% url 'post_list' %}">Homepage</a></h1>
+{% endblock %}

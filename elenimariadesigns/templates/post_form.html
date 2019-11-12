@@ -1,0 +1,9 @@
+<!-- /posts/new linked from /posts -->
+{% extends 'base.html' %}{% block content %} 
+<h1>Post</h1>
+<h5>All fields required</h5>
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
